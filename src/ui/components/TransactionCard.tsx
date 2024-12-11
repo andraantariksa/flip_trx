@@ -2,6 +2,7 @@ import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native"
 import { MainRoutes } from "../routes";
+import { Colors } from "../colors";
 
 export const TransactionCard = () => {
     const navigation = useNavigation();
@@ -26,6 +27,7 @@ const style = StyleSheet.create({
     container: {
         borderRadius: 8,
         flexDirection: 'row',
+        backgroundColor: Colors.White,
     },
     containerContent: {
         flexDirection: 'row',
@@ -40,13 +42,13 @@ const style = StyleSheet.create({
     status: {
         fontSize: 9.92,
         borderRadius: 4,
-        borderColor: 'red',
+        borderColor: Colors.Orange,
         borderWidth: 1.2,
         paddingVertical: 4.4,
         paddingHorizontal: 9.6,
     },
     indicatorStart: {
-        backgroundColor: 'red',
+        backgroundColor: Colors.Orange,
         width: 5.2,
     },
     textTransfer: {
