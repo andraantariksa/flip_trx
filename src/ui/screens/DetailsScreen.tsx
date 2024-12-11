@@ -1,9 +1,10 @@
 import { View, Text, StyleSheet } from "react-native";
+import { Colors } from "../colors";
 
 const Divider = () => <View style={style.divider} />;
 
 export default function DetailScreen() {
-    return <View>
+    return <View style={style.container}>
         <View style={style.containerHeader}>
             <Text style={style.textTitle}>ID TRANSAKSI: #FT16526923</Text>
         </View>
@@ -52,7 +53,7 @@ const style = StyleSheet.create({
     divider: {
         height: 2,
         width: '100%',
-        backgroundColor: 'red',
+        backgroundColor: Colors.Gray,
     },
     containerHeader: {
         paddingHorizontal: 18.4,
@@ -74,6 +75,9 @@ const style = StyleSheet.create({
         gap: 24,
         paddingTop: 10,
     },
+    container: {
+        backgroundColor: Colors.White,
+    },
     containerRow: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -93,7 +97,7 @@ const style = StyleSheet.create({
         fontWeight: '600',
     },
     textStatus: {
-        color: 'red',
+        color: Colors.Orange,
         fontSize: 12.8,
     },
     textInfoTitle: {
