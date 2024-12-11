@@ -28,7 +28,7 @@ export default function DetailScreen() {
                 </View>
                 <View style={style.containerRow}>
                     <View style={style.containerCellLeft}>
-                        <Text style={style.textInfoTitle}>-BERITATRANSFER</Text>
+                        <Text style={style.textInfoTitle}>BERITA TRANSFER</Text>
                         <Text style={style.textInfoSubtitle}>Coba mbanking yey</Text>
                     </View>
                     <View style={style.containerCellRight}>
