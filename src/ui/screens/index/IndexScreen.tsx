@@ -1,5 +1,5 @@
 import React from "react";
-import { TransactionCard } from "../components/TransactionCard";
+import { TransactionCard } from "./components/TransactionCard";
 import { View, StyleSheet } from "react-native";
 
 export const IndexScreen = () => {
