@@ -1,5 +1,5 @@
-import { View } from 'react-native';
+import { IndexScreen } from './src/ui/screens/IndexScreen';
 
 export default function App() {
-  return <View></View>;
+  return <IndexScreen />;
 }
