@@ -1,5 +1,5 @@
-import { IndexScreen } from './src/ui/screens/IndexScreen';
+import MainNavigation from "./src/ui/routes";
 
 export default function App() {
-  return <IndexScreen />;
-}
+  return <MainNavigation />;
+};

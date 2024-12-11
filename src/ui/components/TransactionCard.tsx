@@ -1,8 +1,15 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { View, Text, StyleSheet } from "react-native"
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native"
+import { MainRoutes } from "../routes";
 
 export const TransactionCard = () => {
-    return <View style={style.container}>
+    const navigation = useNavigation();
+
+    return <TouchableOpacity
+        style={style.container}
+        onPress={() => navigation.navigate(MainRoutes.Detail)}
+    >
         <View style={style.indicatorStart} />
         <View style={style.containerContent}>
             <View>
@@ -12,7 +19,7 @@ export const TransactionCard = () => {
             </View>
             <Text style={style.status}>Berhasil</Text>
         </View>
-    </View>;
+    </TouchableOpacity>;
 };
 
 const style = StyleSheet.create({
