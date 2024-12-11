@@ -2,7 +2,7 @@ import React from "react";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { IndexScreen } from "../screens/IndexScreen";
 import DetailScreen from "../screens/DetailsScreen";
-import { createStaticNavigation } from "@react-navigation/native";
+import { createStaticNavigation, StaticParamList } from "@react-navigation/native";
 
 export enum MainRoutes {
     Index = 'index',
@@ -15,6 +15,16 @@ const MainStack = createNativeStackNavigator({
         [MainRoutes.Detail]: DetailScreen
     },
 });
+
+// Type hint for navigation
+type MainStackParamList = StaticParamList<typeof MainStack>;
+
+declare global {
+    namespace ReactNavigation {
+        interface RootParamList extends MainStackParamList {}
+    }
+}
+
 
 const MainNavigation = createStaticNavigation(MainStack);
 
