@@ -1,13 +1,12 @@
 import { View, Text, StyleSheet } from "react-native";
-import { Colors } from "../colors";
+import { Colors } from "../../colors";
+import TransactionId from "./components/TransactionId";
 
 const Divider = () => <View style={style.divider} />;
 
 export default function DetailScreen() {
     return <View style={style.container}>
-        <View style={style.containerHeader}>
-            <Text style={style.textTitle}>ID TRANSAKSI: #FT16526923</Text>
-        </View>
+        <TransactionId transactionId="#FT16526923" />
         <Divider />
         <View style={style.containerStatus}>
             <Text style={style.textTitle}>DETAIL TRANSAKSI</Text>
@@ -54,11 +53,6 @@ const style = StyleSheet.create({
         height: 2,
         width: '100%',
         backgroundColor: Colors.Gray,
-    },
-    containerHeader: {
-        paddingHorizontal: 18.4,
-        paddingVertical: 21.6,
-        flexDirection: 'row',
     },
     containerStatus: {
         paddingHorizontal: 18.4,
