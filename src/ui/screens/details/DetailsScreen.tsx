@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 import { Colors } from "../../colors";
 import TransactionId from "./components/TransactionId";
 
@@ -14,7 +14,15 @@ export default function DetailScreen() {
         </View>
         <Divider />
         <View style={style.containerContent}>
-            <Text style={style.textTransfer}>Permata→BNI</Text>
+            <View style={style.containerBank}>
+                <Text style={style.textTransfer}>
+                    Permata
+                </Text>
+                <Image source={require('../../../../assets/arrow-right.png')} style={style.iconArrow} />
+                <Text style={style.textTransfer}>
+                    BNI
+                </Text>
+            </View>
             <View style={style.containerColumn}>
                 <View style={style.containerRow}>
                     <View style={style.containerCellLeft}>
@@ -100,5 +108,14 @@ const style = StyleSheet.create({
     },
     textInfoSubtitle: {
         fontSize: 12,
+    },
+    iconArrow: {
+        width: 14.8,
+        height: 11.2,
+    },
+    containerBank: {
+        gap: 2.4,
+        flexDirection: 'row',
+        alignItems: 'center',
     },
 });
