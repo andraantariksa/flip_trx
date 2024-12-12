@@ -1,8 +1,8 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native"
-import { MainRoutes } from "../routes";
-import { Colors } from "../colors";
+import { MainRoutes } from "../../../routes";
+import { Colors } from "../../../colors";
 
 export const TransactionCard = () => {
     const navigation = useNavigation();
