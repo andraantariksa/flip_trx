@@ -7,11 +7,7 @@ import {
   StaticParamList,
 } from "@react-navigation/native";
 import { Colors } from "../colors";
-
-export enum MainRoutes {
-  Index = "index",
-  Detail = "detail",
-}
+import { MainRoutes } from "./routes";
 
 const MainStack = createNativeStackNavigator({
   screenOptions: {
