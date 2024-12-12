@@ -96,6 +96,7 @@ const style = StyleSheet.create({
     },
     container: {
         backgroundColor: Colors.White,
+        marginTop: 18.8,
     },
     containerRow: {
         flexDirection: "row",
