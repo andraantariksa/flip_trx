@@ -69,25 +69,6 @@ export default function DetailScreen() {
                     <Text style={style.textInfoSubtitle}>Rp10.028</Text>
                 </View>
             </View>
-            <View style={style.containerRow}>
-                <View style={style.containerCellLeft}>
-                    <Text style={style.textInfoTitle}>BERITA TRANSFER</Text>
-                    <Text style={style.textInfoSubtitle}>
-                        Coba mbanking yey
-                    </Text>
-                </View>
-                <View style={style.containerCellRight}>
-                    <Text style={style.textInfoTitle}>KODE UNIK</Text>
-                    <Text style={style.textInfoSubtitle}>50</Text>
-                </View>
-            </View>
-            <View style={style.containerRow}>
-                <View style={style.containerCellLeft}>
-                    <Text style={style.textInfoTitle}>WAKTU DIBUAT</Text>
-                    <Text style={style.textInfoSubtitle}>8 April 2020</Text>
-                </View>
-                <View style={style.containerCellRight} />
-            </View>
         </View>
     );
 }
@@ -115,6 +96,7 @@ const style = StyleSheet.create({
     },
     container: {
         backgroundColor: Colors.White,
+        marginTop: 18.8,
     },
     containerRow: {
         flexDirection: "row",

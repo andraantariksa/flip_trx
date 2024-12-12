@@ -28,7 +28,6 @@ export const TransactionCard = () => {
                 </View>
                 <Text style={style.status}>Berhasil</Text>
             </View>
-            <Text style={style.status}>Berhasil</Text>
         </TouchableOpacity>
     );
 };
@@ -38,6 +37,7 @@ const style = StyleSheet.create({
         borderRadius: 8,
         flexDirection: "row",
         backgroundColor: Colors.White,
+        overflow: "hidden",
     },
     containerContent: {
         flexDirection: "row",

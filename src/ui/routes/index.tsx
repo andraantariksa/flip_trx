@@ -16,8 +16,18 @@ const MainStack = createNativeStackNavigator({
         },
     },
     screens: {
-        [MainRoutes.Index]: IndexScreen,
-        [MainRoutes.Detail]: DetailScreen,
+        [MainRoutes.Index]: {
+            screen: IndexScreen,
+            options: {
+                title: "Transactions",
+            },
+        },
+        [MainRoutes.Detail]: {
+            screen: DetailScreen,
+            options: {
+                title: "Transaction Details",
+            },
+        },
     },
 });
 
