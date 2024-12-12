@@ -28,7 +28,6 @@ export const TransactionCard = () => {
                 </View>
                 <Text style={style.status}>Berhasil</Text>
             </View>
-            <Text style={style.status}>Berhasil</Text>
         </TouchableOpacity>
     );
 };
