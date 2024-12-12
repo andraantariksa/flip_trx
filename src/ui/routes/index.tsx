@@ -4,11 +4,7 @@ import { IndexScreen } from "../screens/index/IndexScreen";
 import DetailScreen from "../screens/details/DetailsScreen";
 import { createStaticNavigation, StaticParamList } from "@react-navigation/native";
 import { Colors } from "../colors";
-
-export enum MainRoutes {
-    Index = 'index',
-    Detail = 'detail',
-};
+import { MainRoutes } from "./routes";
 
 const MainStack = createNativeStackNavigator({
     screenOptions: {
