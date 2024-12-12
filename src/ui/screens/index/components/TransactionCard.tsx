@@ -3,8 +3,15 @@ import React from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { Colors } from "../../../colors";
 import { MainRoutes } from "../../../routes/routes";
+import Transaction from "../../../../domain/entities/transaction";
+import { formatNumber } from "../../../../utils/number";
+import { formatDate } from "../../../../utils/date";
 
-export const TransactionCard = () => {
+export type TransactionCardProps = {
+    transaction: Transaction;
+};
+
+export const TransactionCard = ({ transaction }: TransactionCardProps) => {
     const navigation = useNavigation();
 
     return (
@@ -16,17 +23,26 @@ export const TransactionCard = () => {
             <View style={style.containerContent}>
                 <View>
                     <View style={style.containerBank}>
-                        <Text style={style.textTransfer}>Permata</Text>
+                        <Text style={style.textTransfer}>
+                            {transaction.senderBank.toUpperCase()}
+                        </Text>
                         <Image
                             source={require("../../../../../assets/arrow-right.png")}
                             style={style.iconArrow}
                         />
-                        <Text style={style.textTransfer}>BNI</Text>
+                        <Text style={style.textTransfer}>
+                            {transaction.receiverBank.toUpperCase()}
+                        </Text>
                     </View>
-                    <Text style={style.textName}>-SYIFA SALSABYLA</Text>
-                    <Text style={style.textInfo}>Rp10.028. 8 April 2020</Text>
+                    <Text style={style.textName}>
+                        {transaction.receiverName}
+                    </Text>
+                    <Text style={style.textInfo}>
+                        Rp{formatNumber(transaction.amount)} ●{" "}
+                        {formatDate(transaction.createdAt)}
+                    </Text>
                 </View>
-                <Text style={style.status}>Berhasil</Text>
+                <Text style={style.status}>{transaction.status}</Text>
             </View>
         </TouchableOpacity>
     );
