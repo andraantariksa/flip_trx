@@ -4,18 +4,20 @@ import { View, StyleSheet } from "react-native";
 import SearchBar from "./components/SearchBar";
 
 export const IndexScreen = () => {
-    return <View style={style.container}>
-        <SearchBar />
-        <View>
-            <TransactionCard />
-        </View>
-    </View>;
+  return (
+    <View style={style.container}>
+      <SearchBar />
+      <View>
+        <TransactionCard />
+      </View>
+    </View>
+  );
 };
 
 const style = StyleSheet.create({
-    container: {
-        flexDirection: 'column',
-        padding: 4,
-        gap: 5.6,
-    },
+  container: {
+    flexDirection: "column",
+    padding: 4,
+    gap: 5.6,
+  },
 });

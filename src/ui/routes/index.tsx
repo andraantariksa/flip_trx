@@ -1,36 +1,38 @@
 import React from "react";
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { IndexScreen } from "../screens/index/IndexScreen";
 import DetailScreen from "../screens/details/DetailsScreen";
-import { createStaticNavigation, StaticParamList } from "@react-navigation/native";
+import {
+  createStaticNavigation,
+  StaticParamList,
+} from "@react-navigation/native";
 import { Colors } from "../colors";
 
 export enum MainRoutes {
-    Index = 'index',
-    Detail = 'detail',
-};
+  Index = "index",
+  Detail = "detail",
+}
 
 const MainStack = createNativeStackNavigator({
-    screenOptions: {
-        contentStyle: {
-            backgroundColor: Colors.Gray,
-        },
+  screenOptions: {
+    contentStyle: {
+      backgroundColor: Colors.Gray,
     },
-    screens: {
-        [MainRoutes.Index]: IndexScreen,
-        [MainRoutes.Detail]: DetailScreen
-    },
+  },
+  screens: {
+    [MainRoutes.Index]: IndexScreen,
+    [MainRoutes.Detail]: DetailScreen,
+  },
 });
 
 // Type hint for navigation
 type MainStackParamList = StaticParamList<typeof MainStack>;
 
 declare global {
-    namespace ReactNavigation {
-        interface RootParamList extends MainStackParamList {}
-    }
+  namespace ReactNavigation {
+    interface RootParamList extends MainStackParamList {}
+  }
 }
-
 
 const MainNavigation = createStaticNavigation(MainStack);
 
