@@ -37,7 +37,7 @@ const style = StyleSheet.create({
         borderRadius: 8,
         flexDirection: "row",
         backgroundColor: Colors.White,
-        overflow: 'hidden',
+        overflow: "hidden",
     },
     containerContent: {
         flexDirection: "row",
