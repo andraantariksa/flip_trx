@@ -10,22 +10,27 @@ function TransactionId({ transactionId }: TransactionIdProps) {
         Clipboard.setStringAsync(transactionId);
     };
 
-    return <TouchableOpacity style={style.containerHeader} onPress={copyText}>
-        <Text style={style.textTitle}>ID TRANSAKSI: {transactionId}</Text>
-        <Image source={require('../../../../../assets/copy.png')} style={style.iconCopy} />
-    </TouchableOpacity>
-};
+    return (
+        <TouchableOpacity style={style.containerHeader} onPress={copyText}>
+            <Text style={style.textTitle}>ID TRANSAKSI: {transactionId}</Text>
+            <Image
+                source={require("../../../../../assets/copy.png")}
+                style={style.iconCopy}
+            />
+        </TouchableOpacity>
+    );
+}
 
 const style = StyleSheet.create({
     containerHeader: {
         paddingHorizontal: 18.4,
         paddingVertical: 21.6,
-        flexDirection: 'row',
+        flexDirection: "row",
         gap: 5.6,
     },
     textTitle: {
         fontSize: 12.8,
-        fontWeight: '600',
+        fontWeight: "600",
     },
     iconCopy: {
         width: 13.6,

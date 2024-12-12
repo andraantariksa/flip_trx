@@ -1,47 +1,49 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native"
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { Colors } from "../../../colors";
 import { MainRoutes } from "../../../routes/routes";
 
 export const TransactionCard = () => {
     const navigation = useNavigation();
 
-    return <TouchableOpacity
-        style={style.container}
-        onPress={() => navigation.navigate(MainRoutes.Detail)}
-    >
-        <View style={style.indicatorStart} />
-        <View style={style.containerContent}>
-            <View>
-                <View style={style.containerBank}>
-                    <Text style={style.textTransfer}>
-                        Permata
-                    </Text>
-                    <Image source={require('../../../../../assets/arrow-right.png')} style={style.iconArrow} />
-                    <Text style={style.textTransfer}>
-                        BNI
-                    </Text>
+    return (
+        <TouchableOpacity
+            style={style.container}
+            onPress={() => navigation.navigate(MainRoutes.Detail)}
+        >
+            <View style={style.indicatorStart} />
+            <View style={style.containerContent}>
+                <View>
+                    <View style={style.containerBank}>
+                        <Text style={style.textTransfer}>Permata</Text>
+                        <Image
+                            source={require("../../../../../assets/arrow-right.png")}
+                            style={style.iconArrow}
+                        />
+                        <Text style={style.textTransfer}>BNI</Text>
+                    </View>
+                    <Text style={style.textName}>-SYIFA SALSABYLA</Text>
+                    <Text style={style.textInfo}>Rp10.028. 8 April 2020</Text>
                 </View>
-                <Text style={style.textName}>-SYIFA SALSABYLA</Text>
-                <Text style={style.textInfo}>Rp10.028. 8 April 2020</Text>
+                <Text style={style.status}>Berhasil</Text>
             </View>
             <Text style={style.status}>Berhasil</Text>
-        </View>
-    </TouchableOpacity>;
+        </TouchableOpacity>
+    );
 };
 
 const style = StyleSheet.create({
     container: {
         borderRadius: 8,
-        flexDirection: 'row',
+        flexDirection: "row",
         backgroundColor: Colors.White,
     },
     containerContent: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        width: '100%',
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        width: "100%",
         paddingTop: 14,
         paddingBottom: 11.6,
         paddingStart: 15.6,
@@ -76,8 +78,7 @@ const style = StyleSheet.create({
     },
     containerBank: {
         gap: 2.4,
-        flexDirection: 'row',
-        alignItems: 'center',
+        flexDirection: "row",
+        alignItems: "center",
     },
 });
-
