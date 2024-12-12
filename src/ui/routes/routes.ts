@@ -1,4 +1,4 @@
 export enum MainRoutes {
-  Index = "index",
-  Detail = "detail",
+    Index = "index",
+    Detail = "detail",
 }
