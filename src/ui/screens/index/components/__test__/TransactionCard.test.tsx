@@ -1,7 +1,7 @@
 import React from "react";
 import { TransactionCard } from "../TransactionCard";
 import "@testing-library/jest-native";
-import { transactionFixture } from "../../../../../../__test__/fixtures/transactions";
+import { transactionFixtures } from "../../../../../../__test__/fixtures/transactions";
 import { render } from "@testing-library/react-native";
 import { NavigationContainer } from "@react-navigation/native";
 
@@ -9,7 +9,7 @@ describe("<TransactionCard />", () => {
     test("Text rendered correctly", () => {
         const { getByTestId } = render(
             <NavigationContainer>
-                <TransactionCard transaction={transactionFixture} />
+                <TransactionCard transaction={transactionFixtures[0]} />
             </NavigationContainer>,
         );
         expect(getByTestId("senderBank")).toHaveTextContent("BCA");
