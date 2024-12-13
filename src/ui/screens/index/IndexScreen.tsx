@@ -26,6 +26,7 @@ export const IndexScreen = () => {
                 onPressSort={showModal}
                 setQuery={setSearchQuery}
                 query={searchQuery}
+                sortBy={sortBy}
             />
             <View>
                 <FlatList
