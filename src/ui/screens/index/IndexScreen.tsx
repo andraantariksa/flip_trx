@@ -6,8 +6,8 @@ import SortModal, { SortByKey } from "./components/FilterModal";
 import useTransactionsQuery from "../../hooks/useTransactionsQuery";
 
 export const IndexScreen = () => {
-    const { data } = useTransactionsQuery();
     const [sortBy, setSortBy] = useState<SortByKey>("none");
+    const { data } = useTransactionsQuery(sortBy);
     const [showFilterModal, setShowFilterModal] = useState(false);
 
     const showModal = () => setShowFilterModal(true);
