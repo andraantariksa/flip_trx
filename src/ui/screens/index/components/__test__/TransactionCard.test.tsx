@@ -5,8 +5,6 @@ import { transactionFixture } from "../../../../../../__test__/fixtures/transact
 import { render } from "@testing-library/react-native";
 import { NavigationContainer } from "@react-navigation/native";
 
-jest.useFakeTimers();
-
 describe("<TransactionCard />", () => {
     test("Text rendered correctly", () => {
         const { getByTestId } = render(
@@ -19,7 +17,7 @@ describe("<TransactionCard />", () => {
         expect(getByTestId("info")).toHaveTextContent(
             "Rp3.959.008 ● 30 Juni 2025",
         );
-        expect(getByTestId("receiverName")).toHaveTextContent("Andra");
+        expect(getByTestId("receiverName")).toHaveTextContent("ANDRA");
         expect(getByTestId("status")).toHaveTextContent("Pengecekan");
     });
 });
