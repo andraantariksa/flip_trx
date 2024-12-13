@@ -12,7 +12,9 @@ function TransactionId({ transactionId }: TransactionIdProps) {
 
     return (
         <TouchableOpacity style={style.containerHeader} onPress={copyText}>
-            <Text style={style.textTitle}>ID TRANSAKSI: {transactionId}</Text>
+            <Text style={style.textTitle} testID="transactionId">
+                ID TRANSAKSI: {transactionId}
+            </Text>
             <Image
                 source={require("../../../../../assets/copy.png")}
                 style={style.iconCopy}
