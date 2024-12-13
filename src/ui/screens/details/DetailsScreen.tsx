@@ -42,7 +42,7 @@ export default function DetailScreen({ route }: DetailScreenProps) {
                                 style={style.textInfoTitle}
                                 testID="receiverName"
                             >
-                                {transaction.receiverName}
+                                {transaction.receiverName.toUpperCase()}
                             </Text>
                             <Text
                                 style={style.textInfoSubtitle}
