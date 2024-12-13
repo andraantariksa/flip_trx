@@ -9,6 +9,7 @@ export const IndexScreen = () => {
     const [sortBy, setSortBy] = useState<SortByKey>("none");
     const { data } = useTransactionsQuery(sortBy);
     const [showFilterModal, setShowFilterModal] = useState(false);
+    const [searchQuery, setSearchQuery] = useState("");
 
     const showModal = () => setShowFilterModal(true);
     const hideModal = () => setShowFilterModal(false);
@@ -21,7 +22,11 @@ export const IndexScreen = () => {
                 visible={showFilterModal}
                 onChangeValue={setSortBy}
             />
-            <SearchBar onPressSort={showModal} />
+            <SearchBar
+                onPressSort={showModal}
+                setQuery={setSearchQuery}
+                query={searchQuery}
+            />
             <View>
                 <FlatList
                     data={data ?? []}

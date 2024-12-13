@@ -11,11 +11,11 @@ import { Colors } from "../../../colors";
 
 export type SearchBarProps = {
     onPressSort: () => void;
+    setQuery: (query: string) => void;
+    query: string;
 };
 
-const SearchBar = ({ onPressSort }: SearchBarProps) => {
-    const [query, setQuery] = useState("");
-
+const SearchBar = ({ onPressSort, query, setQuery }: SearchBarProps) => {
     return (
         <View style={style.container}>
             <Image
