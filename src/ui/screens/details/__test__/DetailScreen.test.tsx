@@ -3,6 +3,7 @@ import "@testing-library/jest-native";
 import { render } from "@testing-library/react-native";
 import { transactionFixture } from "../../../../../__test__/fixtures/transactions";
 import DetailScreen, { DetailScreenProps } from "../DetailsScreen";
+import { NavigationContainer } from "@react-navigation/native";
 
 describe("<DetailScreen />", () => {
     test("Text rendered correctly", () => {
@@ -11,7 +12,11 @@ describe("<DetailScreen />", () => {
                 transaction: transactionFixture,
             },
         };
-        const { getByTestId } = render(<DetailScreen route={route} />);
+        const { getByTestId } = render(
+            <NavigationContainer>
+                <DetailScreen route={route} />
+            </NavigationContainer>,
+        );
 
         expect(getByTestId("receiverName")).toHaveTextContent("ANDRA");
         expect(getByTestId("senderBank")).toHaveTextContent("BCA");
