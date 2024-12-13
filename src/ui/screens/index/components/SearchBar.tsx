@@ -9,7 +9,11 @@ import {
 } from "react-native";
 import { Colors } from "../../../colors";
 
-const SearchBar = () => {
+export type SearchBarProps = {
+    onPressSort: () => void;
+};
+
+const SearchBar = ({ onPressSort }: SearchBarProps) => {
     const [query, setQuery] = useState("");
 
     return (
@@ -24,7 +28,7 @@ const SearchBar = () => {
                 placeholder="Cari nama, bank, atau nominal"
                 style={style.textInput}
             />
-            <TouchableOpacity style={style.containerSort}>
+            <TouchableOpacity style={style.containerSort} onPress={onPressSort}>
                 <Text style={style.textSort}>URUTKAN</Text>
                 <Image
                     source={require("../../../../../assets/chevron.png")}
