@@ -27,11 +27,11 @@ describe("<DetailScreen />", () => {
         expect(getByTestId("remark")).toHaveTextContent(
             "Hi there, from fixtures",
         );
-        expect(getByTestId("amount")).toHaveTextContent("Rp3.959.008");
+        expect(getByTestId("amount")).toHaveTextContent("Rp1.000");
         expect(getByTestId("uniqueCode")).toHaveTextContent("141");
         expect(getByTestId("createdAt")).toHaveTextContent("30 Juni 2025");
         expect(getByTestId("transactionId")).toHaveTextContent(
-            "ID TRANSAKSI: #FT51296",
+            "ID TRANSAKSI: #FT0001",
         );
     });
 });
