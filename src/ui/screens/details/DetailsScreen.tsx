@@ -1,7 +1,7 @@
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { Colors } from "../../colors";
 import TransactionId from "./components/TransactionId";
-import { StaticScreenProps } from "@react-navigation/native";
+import { StaticScreenProps, useNavigation } from "@react-navigation/native";
 import Transaction from "../../../domain/entities/transaction";
 import { formatNumber } from "../../../utils/number";
 import { formatDate } from "../../../utils/date";
@@ -11,6 +11,7 @@ export type DetailScreenProps = StaticScreenProps<{
 }>;
 
 export default function DetailScreen({ route }: DetailScreenProps) {
+    const navigation = useNavigation();
     const { transaction } = route.params;
 
     return (
@@ -19,7 +20,9 @@ export default function DetailScreen({ route }: DetailScreenProps) {
             <View style={style.divider} />
             <View style={style.containerStatus}>
                 <Text style={style.textTitle}>DETAIL TRANSAKSI</Text>
-                <Text style={style.textStatus}>Tutup</Text>
+                <TouchableOpacity onPress={navigation.goBack}>
+                    <Text style={style.textStatus}>Tutup</Text>
+                </TouchableOpacity>
             </View>
             <View style={style.divider} />
             <View style={style.containerContent}>
@@ -110,8 +113,7 @@ const style = StyleSheet.create({
         backgroundColor: Colors.Gray,
     },
     containerStatus: {
-        paddingHorizontal: 18.4,
-        paddingVertical: 20,
+        padding: 4,
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
@@ -141,6 +143,7 @@ const style = StyleSheet.create({
     textTitle: {
         fontSize: 12.8,
         fontWeight: "600",
+        paddingHorizontal: 14.4,
     },
     textTransfer: {
         fontSize: 15.6,
@@ -149,6 +152,8 @@ const style = StyleSheet.create({
     textStatus: {
         color: Colors.Orange,
         fontSize: 12.8,
+        paddingVertical: 16,
+        paddingHorizontal: 14.4,
     },
     textInfoTitle: {
         fontSize: 12,

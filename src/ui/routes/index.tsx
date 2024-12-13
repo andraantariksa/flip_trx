@@ -1,4 +1,3 @@
-import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { IndexScreen } from "../screens/index/IndexScreen";
 import DetailScreen from "../screens/details/DetailsScreen";
@@ -11,6 +10,7 @@ import { MainRoutes } from "./routes";
 
 const MainStack = createNativeStackNavigator({
     screenOptions: {
+        headerShown: false,
         contentStyle: {
             backgroundColor: Colors.Gray,
         },
