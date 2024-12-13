@@ -6,6 +6,7 @@ import { useMemo } from "react";
 
 export default function useTransactionsQuery(
     sortBy: SortByKey,
+    searchQuery: string | null = null,
 ): UseQueryResult<Transaction[], Error> {
     const query = useQuery({
         queryKey: ["transactions"],
@@ -25,8 +26,37 @@ export default function useTransactionsQuery(
             return undefined;
         }
 
+        let filteredTransactions: Array<Transaction>;
+        if (searchQuery !== null) {
+            const searchPredicate = (transaction: Transaction) => {
+                const normalizedSearchQuery = searchQuery.toLowerCase();
+
+                const receiverNameMatch = transaction.receiverName
+                    .toLowerCase()
+                    .includes(normalizedSearchQuery);
+                const senderBankMatch = transaction.senderBank
+                    .toLowerCase()
+                    .includes(normalizedSearchQuery);
+                const receiverBankMatch = transaction.receiverBank
+                    .toLowerCase()
+                    .includes(normalizedSearchQuery);
+                const amountMatch = transaction.amount
+                    .toString()
+                    .includes(normalizedSearchQuery);
+                return (
+                    receiverBankMatch ||
+                    senderBankMatch ||
+                    amountMatch ||
+                    receiverNameMatch
+                );
+            };
+            filteredTransactions = transactions.filter(searchPredicate);
+        } else {
+            filteredTransactions = transactions;
+        }
+
         if (sortBy === "none") {
-            return transactions;
+            return filteredTransactions;
         }
 
         const sorter: Record<
@@ -44,9 +74,11 @@ export default function useTransactionsQuery(
             none: () => 0,
         };
 
-        const sortedTransactions = [...transactions].sort(sorter[sortBy]);
+        const sortedTransactions = [...filteredTransactions].sort(
+            sorter[sortBy],
+        );
         return sortedTransactions;
-    }, [transactionsDependency, sortBy]);
+    }, [transactionsDependency, sortBy, searchQuery]);
 
     return {
         ...query,
