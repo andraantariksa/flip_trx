@@ -1,20 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { TransactionCard } from "./components/TransactionCard";
 import { View, StyleSheet, FlatList } from "react-native";
 import SearchBar from "./components/SearchBar";
-import TransactionRepositoryImpl from "../../../data/repository/transactionRepository";
-import Transaction from "../../../domain/entities/transaction";
-import { useQuery } from "@tanstack/react-query";
 import SortModal, { SortByKey } from "./components/FilterModal";
+import useTransactionsQuery from "../../hooks/useTransactionsQuery";
 
 export const IndexScreen = () => {
-    const { data } = useQuery({
-        queryKey: ["transactions"],
-        queryFn: async () => {
-            const transactionRepository = new TransactionRepositoryImpl();
-            return await transactionRepository.getAll();
-        },
-    });
+    const { data } = useTransactionsQuery();
     const [sortBy, setSortBy] = useState<SortByKey>("none");
     const [showFilterModal, setShowFilterModal] = useState(false);
 
