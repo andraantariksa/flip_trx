@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { Colors } from "../../../colors";
 
-const SortBy = {
+export const SortBy = {
     none: "URUTKAN",
     nameAsc: "Nama A-Z",
     nameDesc: "Nama Z-A",
