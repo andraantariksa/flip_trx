@@ -2,18 +2,16 @@ import { View, Text, StyleSheet, Image } from "react-native";
 import { Colors } from "../../colors";
 import TransactionId from "./components/TransactionId";
 
-const Divider = () => <View style={style.divider} />;
-
 export default function DetailScreen() {
     return (
         <View style={style.container}>
             <TransactionId transactionId="#FT16526923" />
-            <Divider />
+            <View style={style.divider} />
             <View style={style.containerStatus}>
                 <Text style={style.textTitle}>DETAIL TRANSAKSI</Text>
                 <Text style={style.textStatus}>Tutup</Text>
             </View>
-            <Divider />
+            <View style={style.divider} />
             <View style={style.containerContent}>
                 <View style={style.containerBank}>
                     <Text style={style.textTransfer}>Permata</Text>
@@ -63,10 +61,6 @@ export default function DetailScreen() {
                         </View>
                         <View style={style.containerCellRight} />
                     </View>
-                </View>
-                <View style={style.containerCellRight}>
-                    <Text style={style.textInfoTitle}>NOMINAL</Text>
-                    <Text style={style.textInfoSubtitle}>Rp10.028</Text>
                 </View>
             </View>
         </View>
