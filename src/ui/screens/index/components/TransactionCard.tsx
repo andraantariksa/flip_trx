@@ -30,7 +30,11 @@ export const TransactionCard = ({ transaction }: TransactionCardProps) => {
     return (
         <TouchableOpacity
             style={style.container}
-            onPress={() => navigation.navigate(MainRoutes.Detail)}
+            onPress={() =>
+                navigation.navigate(MainRoutes.Detail, {
+                    transaction,
+                })
+            }
         >
             <View style={[style.indicator, indicatorStyle]} />
             <View style={style.containerContent}>

@@ -1,8 +1,16 @@
 import { View, Text, StyleSheet, Image } from "react-native";
 import { Colors } from "../../colors";
 import TransactionId from "./components/TransactionId";
+import { StaticScreenProps } from "@react-navigation/native";
+import Transaction from "../../../domain/entities/transaction";
 
-export default function DetailScreen() {
+export type DetailScreenProps = StaticScreenProps<{
+    transaction: Transaction;
+}>;
+
+export default function DetailScreen({ route }: DetailScreenProps) {
+    const { transaction } = route.params;
+
     return (
         <View style={style.container}>
             <TransactionId transactionId="#FT16526923" />
