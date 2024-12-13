@@ -3,6 +3,8 @@ import { Colors } from "../../colors";
 import TransactionId from "./components/TransactionId";
 import { StaticScreenProps } from "@react-navigation/native";
 import Transaction from "../../../domain/entities/transaction";
+import { formatNumber } from "../../../utils/number";
+import { formatDate } from "../../../utils/date";
 
 export type DetailScreenProps = StaticScreenProps<{
     transaction: Transaction;
@@ -13,7 +15,7 @@ export default function DetailScreen({ route }: DetailScreenProps) {
 
     return (
         <View style={style.container}>
-            <TransactionId transactionId="#FT16526923" />
+            <TransactionId transactionId={`#${transaction.code}`} />
             <View style={style.divider} />
             <View style={style.containerStatus}>
                 <Text style={style.textTitle}>DETAIL TRANSAKSI</Text>
@@ -22,26 +24,41 @@ export default function DetailScreen({ route }: DetailScreenProps) {
             <View style={style.divider} />
             <View style={style.containerContent}>
                 <View style={style.containerBank}>
-                    <Text style={style.textTransfer}>Permata</Text>
+                    <Text style={style.textTransfer} testID="senderBank">
+                        {transaction.senderBank.toUpperCase()}
+                    </Text>
                     <Image
                         source={require("../../../../assets/arrow-right.png")}
                         style={style.iconArrow}
                     />
-                    <Text style={style.textTransfer}>BNI</Text>
+                    <Text style={style.textTransfer} testID="receiverBank">
+                        {transaction.receiverBank.toUpperCase()}
+                    </Text>
                 </View>
                 <View style={style.containerColumn}>
                     <View style={style.containerRow}>
                         <View style={style.containerCellLeft}>
-                            <Text style={style.textInfoTitle}>
-                                -SYIFA SALSABYLA
+                            <Text
+                                style={style.textInfoTitle}
+                                testID="receiverName"
+                            >
+                                {transaction.receiverName}
                             </Text>
-                            <Text style={style.textInfoSubtitle}>
-                                0313955548
+                            <Text
+                                style={style.textInfoSubtitle}
+                                testID="receiverSenderAccountNumber"
+                            >
+                                {transaction.senderAccountNumber}
                             </Text>
                         </View>
                         <View style={style.containerCellRight}>
                             <Text style={style.textInfoTitle}>NOMINAL</Text>
-                            <Text style={style.textInfoSubtitle}>Rp10.028</Text>
+                            <Text
+                                style={style.textInfoSubtitle}
+                                testID="amount"
+                            >
+                                Rp{formatNumber(transaction.amount)}
+                            </Text>
                         </View>
                     </View>
                     <View style={style.containerRow}>
@@ -49,13 +66,21 @@ export default function DetailScreen({ route }: DetailScreenProps) {
                             <Text style={style.textInfoTitle}>
                                 BERITA TRANSFER
                             </Text>
-                            <Text style={style.textInfoSubtitle}>
-                                Coba mbanking yey
+                            <Text
+                                style={style.textInfoSubtitle}
+                                testID="remark"
+                            >
+                                {transaction.remark}
                             </Text>
                         </View>
                         <View style={style.containerCellRight}>
                             <Text style={style.textInfoTitle}>KODE UNIK</Text>
-                            <Text style={style.textInfoSubtitle}>50</Text>
+                            <Text
+                                style={style.textInfoSubtitle}
+                                testID="uniqueCode"
+                            >
+                                {transaction.uniqueCode}
+                            </Text>
                         </View>
                     </View>
                     <View style={style.containerRow}>
@@ -63,8 +88,11 @@ export default function DetailScreen({ route }: DetailScreenProps) {
                             <Text style={style.textInfoTitle}>
                                 WAKTU DIBUAT
                             </Text>
-                            <Text style={style.textInfoSubtitle}>
-                                8 April 2020
+                            <Text
+                                style={style.textInfoSubtitle}
+                                testID="createdAt"
+                            >
+                                {formatDate(transaction.createdAt)}
                             </Text>
                         </View>
                         <View style={style.containerCellRight} />
