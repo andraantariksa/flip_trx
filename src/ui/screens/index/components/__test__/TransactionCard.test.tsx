@@ -14,9 +14,7 @@ describe("<TransactionCard />", () => {
         );
         expect(getByTestId("senderBank")).toHaveTextContent("BCA");
         expect(getByTestId("receiverBank")).toHaveTextContent("BRI");
-        expect(getByTestId("info")).toHaveTextContent(
-            "Rp3.959.008 ● 30 Juni 2025",
-        );
+        expect(getByTestId("info")).toHaveTextContent("Rp1.000 ● 30 Juni 2025");
         expect(getByTestId("receiverName")).toHaveTextContent("ANDRA");
         expect(getByTestId("status")).toHaveTextContent("Pengecekan");
     });

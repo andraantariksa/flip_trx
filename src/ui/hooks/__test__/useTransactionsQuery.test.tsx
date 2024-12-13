@@ -27,14 +27,20 @@ const mockRepository = () => {
     }));
 };
 
-const runHookAndWaitResult = async (sortBy: SortByKey) => {
-    const { result, unmount } = renderHook(() => useTransactionsQuery(sortBy), {
-        wrapper: ({ children }) => (
-            <QueryClientProvider client={testQueryClient}>
-                {children}
-            </QueryClientProvider>
-        ),
-    });
+const runHookAndWaitResult = async (
+    sortBy: SortByKey,
+    searchQuery: string | null = null,
+) => {
+    const { result, unmount } = renderHook(
+        () => useTransactionsQuery(sortBy, searchQuery),
+        {
+            wrapper: ({ children }) => (
+                <QueryClientProvider client={testQueryClient}>
+                    {children}
+                </QueryClientProvider>
+            ),
+        },
+    );
     await waitFor(() => expect(result.current.isLoading).toBe(false));
     unmount();
     return result.current;
@@ -57,10 +63,10 @@ describe("useTransactionsQuery", () => {
         mockRepository();
 
         const result = await runHookAndWaitResult("nameAsc");
+
         const dates = result.data!.map(
             (transaction) => transaction.receiverName,
         );
-
         expect(dates).toStrictEqual(["Andra", "Andri", "Indra"]);
     });
 
@@ -68,10 +74,10 @@ describe("useTransactionsQuery", () => {
         mockRepository();
 
         const result = await runHookAndWaitResult("nameDesc");
+
         const dates = result.data!.map(
             (transaction) => transaction.receiverName,
         );
-
         expect(dates).toStrictEqual(["Indra", "Andri", "Andra"]);
     });
 
@@ -79,10 +85,10 @@ describe("useTransactionsQuery", () => {
         mockRepository();
 
         const result = await runHookAndWaitResult("dateAsc");
+
         const dates = result.data!.map((transaction) =>
             formatDate(transaction.createdAt),
         );
-
         expect(dates).toStrictEqual([
             "30 Mei 2025",
             "29 Juni 2025",
@@ -111,5 +117,86 @@ describe("useTransactionsQuery", () => {
         const result = await runHookAndWaitResult("none");
 
         expect(result.data).toStrictEqual(transactionFixtures);
+    });
+
+    test("data filtered correctly using sender or receiver bank code", async () => {
+        mockRepository();
+
+        const result = await runHookAndWaitResult("none", "BcA");
+
+        const transactions = result.data!.map(
+            ({ senderBank, receiverBank, code }) => ({
+                code,
+                senderBank,
+                receiverBank,
+            }),
+        );
+        expect(transactions).toStrictEqual([
+            {
+                code: "FT0001",
+                senderBank: "bca",
+                receiverBank: "bri",
+            },
+            {
+                code: "FT0002",
+                receiverBank: "bca",
+                senderBank: "bri",
+            },
+        ]);
+    });
+
+    test("data filtered correctly using receiver name", async () => {
+        mockRepository();
+
+        const result = await runHookAndWaitResult("none", "inDrA");
+
+        const transactions = result.data!.map(({ code, receiverName }) => ({
+            code,
+            receiverName,
+        }));
+        expect(transactions).toStrictEqual([
+            {
+                code: "FT0003",
+                receiverName: "Indra",
+            },
+        ]);
+    });
+
+    test("data filtered correctly using amount", async () => {
+        mockRepository();
+
+        const result = await runHookAndWaitResult("none", "2500");
+
+        const transactions = result.data!.map(({ code, amount }) => ({
+            code,
+            amount,
+        }));
+        expect(transactions).toStrictEqual([
+            {
+                code: "FT0002",
+                amount: 2500,
+            },
+        ]);
+    });
+
+    test("data filtered correctly using amount and sorted with `dateAsc`", async () => {
+        mockRepository();
+
+        const result = await runHookAndWaitResult("dateAsc", "50");
+
+        const transactions = result.data!.map(({ code, amount }) => ({
+            code,
+            amount,
+        }));
+        expect(transactions).toStrictEqual([
+            {
+                code: "FT0003",
+                amount: 3500,
+            },
+            {
+                code: "FT0002",
+                amount: 2500,
+            },
+        ]);
     });
 });

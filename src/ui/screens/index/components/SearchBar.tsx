@@ -12,12 +12,17 @@ import { SortBy, SortByKey } from "./FilterModal";
 
 export type SearchBarProps = {
     onPressSort: () => void;
+    setQuery: (query: string) => void;
+    query: string;
     sortBy: SortByKey;
 };
 
-const SearchBar = ({ onPressSort, sortBy }: SearchBarProps) => {
-    const [query, setQuery] = useState("");
-
+const SearchBar = ({
+    onPressSort,
+    query,
+    setQuery,
+    sortBy,
+}: SearchBarProps) => {
     return (
         <View style={style.container}>
             <Image

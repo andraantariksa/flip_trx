@@ -6,8 +6,9 @@ import SortModal, { SortByKey } from "./components/FilterModal";
 import useTransactionsQuery from "../../hooks/useTransactionsQuery";
 
 export const IndexScreen = () => {
+    const [searchQuery, setSearchQuery] = useState("");
     const [sortBy, setSortBy] = useState<SortByKey>("none");
-    const { data } = useTransactionsQuery(sortBy);
+    const { data } = useTransactionsQuery(sortBy, searchQuery);
     const [showFilterModal, setShowFilterModal] = useState(false);
 
     const showModal = () => setShowFilterModal(true);
@@ -21,7 +22,12 @@ export const IndexScreen = () => {
                 visible={showFilterModal}
                 onChangeValue={setSortBy}
             />
-            <SearchBar onPressSort={showModal} sortBy={sortBy} />
+            <SearchBar
+                onPressSort={showModal}
+                setQuery={setSearchQuery}
+                query={searchQuery}
+                sortBy={sortBy}
+            />
             <View>
                 <FlatList
                     data={data ?? []}
