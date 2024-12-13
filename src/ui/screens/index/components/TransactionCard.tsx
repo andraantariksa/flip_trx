@@ -1,9 +1,19 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
+import {
+    View,
+    Text,
+    Image,
+    StyleSheet,
+    TouchableOpacity,
+    GestureResponderEvent,
+    ViewStyle,
+} from "react-native";
 import { Colors } from "../../../colors";
 import { MainRoutes } from "../../../routes/routes";
-import Transaction from "../../../../domain/entities/transaction";
+import Transaction, {
+    TransactionStatus,
+} from "../../../../domain/entities/transaction";
 import { formatNumber } from "../../../../utils/number";
 import { formatDate } from "../../../../utils/date";
 
@@ -13,36 +23,41 @@ export type TransactionCardProps = {
 
 export const TransactionCard = ({ transaction }: TransactionCardProps) => {
     const navigation = useNavigation();
+    const { buttonStyle, indicatorStyle, status } = getStatusDisplay(
+        transaction.status,
+    );
 
     return (
         <TouchableOpacity
             style={style.container}
             onPress={() => navigation.navigate(MainRoutes.Detail)}
         >
-            <View style={style.indicatorStart} />
+            <View style={[style.indicator, indicatorStyle]} />
             <View style={style.containerContent}>
                 <View>
                     <View style={style.containerBank}>
-                        <Text style={style.textTransfer}>
+                        <Text style={style.textTransfer} testID="senderBank">
                             {transaction.senderBank.toUpperCase()}
                         </Text>
                         <Image
                             source={require("../../../../../assets/arrow-right.png")}
                             style={style.iconArrow}
                         />
-                        <Text style={style.textTransfer}>
+                        <Text style={style.textTransfer} testID="receiverBank">
                             {transaction.receiverBank.toUpperCase()}
                         </Text>
                     </View>
-                    <Text style={style.textName}>
+                    <Text style={style.textName} testID="receiverName">
                         {transaction.receiverName}
                     </Text>
-                    <Text style={style.textInfo}>
+                    <Text style={style.textInfo} testID="info">
                         Rp{formatNumber(transaction.amount)} ●{" "}
                         {formatDate(transaction.createdAt)}
                     </Text>
                 </View>
-                <Text style={style.status}>{transaction.status}</Text>
+                <Text style={[style.statusBase, buttonStyle]} testID="status">
+                    {status}
+                </Text>
             </View>
         </TouchableOpacity>
     );
@@ -65,17 +80,29 @@ const style = StyleSheet.create({
         paddingStart: 15.6,
         paddingEnd: 9.6,
     },
-    status: {
+    statusBase: {
         fontSize: 9.92,
         borderRadius: 4,
-        borderColor: Colors.Orange,
-        borderWidth: 1.2,
         paddingVertical: 4.4,
         paddingHorizontal: 9.6,
     },
-    indicatorStart: {
-        backgroundColor: Colors.Orange,
+    statusSuccess: {
+        backgroundColor: Colors.Green,
+        color: Colors.White,
+    },
+    statusPending: {
+        borderColor: Colors.Orange,
+        color: Colors.Black,
+        borderWidth: 1.2,
+    },
+    indicator: {
         width: 5.2,
+    },
+    indicatorSuccess: {
+        backgroundColor: Colors.Green,
+    },
+    indicatorPending: {
+        backgroundColor: Colors.Orange,
     },
     textTransfer: {
         fontSize: 14.72,
@@ -98,3 +125,26 @@ const style = StyleSheet.create({
         alignItems: "center",
     },
 });
+
+type StatusDisplay = {
+    status: string;
+    buttonStyle: ViewStyle;
+    indicatorStyle: ViewStyle;
+};
+
+const STATUS_DISPLAY_MAPPING: Record<TransactionStatus, StatusDisplay> = {
+    PENDING: {
+        status: "Pengecekan",
+        buttonStyle: style.statusPending,
+        indicatorStyle: style.indicatorPending,
+    },
+    SUCCESS: {
+        status: "Berhasil",
+        buttonStyle: style.statusSuccess,
+        indicatorStyle: style.indicatorSuccess,
+    },
+};
+
+const getStatusDisplay = (status: TransactionStatus): StatusDisplay => {
+    return STATUS_DISPLAY_MAPPING[status];
+};
