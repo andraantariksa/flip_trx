@@ -13,6 +13,7 @@ describe("<DetailScreen />", () => {
         };
         const { getByTestId } = render(<DetailScreen route={route} />);
 
+        expect(getByTestId("receiverName")).toHaveTextContent("ANDRA");
         expect(getByTestId("senderBank")).toHaveTextContent("BCA");
         expect(getByTestId("receiverBank")).toHaveTextContent("BRI");
         expect(getByTestId("receiverSenderAccountNumber")).toHaveTextContent(
