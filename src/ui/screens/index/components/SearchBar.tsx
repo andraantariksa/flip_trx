@@ -8,12 +8,14 @@ import {
     TouchableOpacity,
 } from "react-native";
 import { Colors } from "../../../colors";
+import { SortBy, SortByKey } from "./FilterModal";
 
 export type SearchBarProps = {
     onPressSort: () => void;
+    sortBy: SortByKey;
 };
 
-const SearchBar = ({ onPressSort }: SearchBarProps) => {
+const SearchBar = ({ onPressSort, sortBy }: SearchBarProps) => {
     const [query, setQuery] = useState("");
 
     return (
@@ -29,7 +31,7 @@ const SearchBar = ({ onPressSort }: SearchBarProps) => {
                 style={style.textInput}
             />
             <TouchableOpacity style={style.containerSort} onPress={onPressSort}>
-                <Text style={style.textSort}>URUTKAN</Text>
+                <Text style={style.textSort}>{SortBy[sortBy]}</Text>
                 <Image
                     source={require("../../../../../assets/chevron.png")}
                     style={style.iconChevron}

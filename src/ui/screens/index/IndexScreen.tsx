@@ -21,7 +21,7 @@ export const IndexScreen = () => {
                 visible={showFilterModal}
                 onChangeValue={setSortBy}
             />
-            <SearchBar onPressSort={showModal} />
+            <SearchBar onPressSort={showModal} sortBy={sortBy} />
             <View>
                 <FlatList
                     data={data ?? []}
