@@ -22,12 +22,11 @@ const sortByEntries = Object.entries(SortBy) as Array<[SortByKey, string]>;
 
 type ModalItemProps = {
     label: string;
-    value: SortByKey;
     isChecked: boolean;
     onPress: () => void;
 };
 
-function ModalItem({ label, value, isChecked, onPress }: ModalItemProps) {
+function ModalItem({ label, isChecked, onPress }: ModalItemProps) {
     let radioIcon: ImageSourcePropType;
     if (isChecked) {
         radioIcon = require("../../../../../assets/radio_check.png");
@@ -77,7 +76,6 @@ export default function SortModal({
                         return (
                             <ModalItem
                                 key={value}
-                                value={value}
                                 label={label}
                                 onPress={onPress}
                                 isChecked={value == selectedValue}
