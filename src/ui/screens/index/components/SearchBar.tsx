@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import {
     TextInput,
     View,
@@ -20,8 +20,8 @@ export type SearchBarProps = {
 const SearchBar = ({ query, setQuery, sortBy, setSortBy }: SearchBarProps) => {
     const [showFilterModal, setShowFilterModal] = useState(false);
 
-    const showModal = () => setShowFilterModal(true);
-    const hideModal = () => setShowFilterModal(false);
+    const showModal = useCallback(() => setShowFilterModal(true), []);
+    const hideModal = useCallback(() => setShowFilterModal(false), []);
 
     return (
         <>

@@ -1,10 +1,19 @@
 import React, { useState } from "react";
 import { TransactionCard } from "./components/TransactionCard";
-import { View, StyleSheet, FlatList, Text } from "react-native";
+import { View, StyleSheet, FlatList, Text, FlatListProps, ListRenderItem } from "react-native";
 import SearchBar from "./components/SearchBar";
 import SortModal, { SortByKey } from "./components/FilterModal";
 import useTransactionsQuery from "../../hooks/useTransactionsQuery";
 import useInsetsStyle from "../../hooks/useInsetsStyle";
+import Transaction from "../../../domain/entities/transaction";
+
+export const Separator = () => (
+    <View style={style.separatorTransaction} />
+);
+
+export const TransactionItem: ListRenderItem<Transaction> = ({ item }) => (
+    <TransactionCard transaction={item} />
+);
 
 export const IndexScreen = () => {
     const insetsStyle = useInsetsStyle();
@@ -22,12 +31,8 @@ export const IndexScreen = () => {
             />
             <FlatList
                 data={data ?? []}
-                renderItem={({ item }) => (
-                    <TransactionCard transaction={item} />
-                )}
-                ItemSeparatorComponent={() => (
-                    <View style={style.separatorTransaction} />
-                )}
+                renderItem={TransactionItem}
+                ItemSeparatorComponent={Separator}
                 contentContainerStyle={style.containerTransactionsContent}
                 style={style.transactionsContent}
             />
