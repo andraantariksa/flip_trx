@@ -4,8 +4,10 @@ import { View, StyleSheet, FlatList } from "react-native";
 import SearchBar from "./components/SearchBar";
 import SortModal, { SortByKey } from "./components/FilterModal";
 import useTransactionsQuery from "../../hooks/useTransactionsQuery";
+import useInsetsStyle from "../../hooks/useInsetsStyle";
 
 export const IndexScreen = () => {
+    const insetsStyle = useInsetsStyle();
     const [searchQuery, setSearchQuery] = useState("");
     const [sortBy, setSortBy] = useState<SortByKey>("none");
     const { data } = useTransactionsQuery(sortBy, searchQuery);
@@ -15,7 +17,7 @@ export const IndexScreen = () => {
     const hideModal = () => setShowFilterModal(false);
 
     return (
-        <View style={style.container}>
+        <View style={[style.container, insetsStyle]}>
             <SortModal
                 value={sortBy}
                 onRequestClose={hideModal}
