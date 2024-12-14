@@ -43,7 +43,7 @@ export const transformToTransaction = (dto: TransactionDto): Transaction => {
         receiverBank: dto.beneficiary_bank,
         receiverName: dto.beneficiary_name,
         remark: dto.remark,
-        senderAccountNumber: dto.account_number,
+        receiverAccountNumber: dto.account_number,
         senderBank: dto.sender_bank,
         status: dto.status,
         uniqueCode: dto.unique_code,

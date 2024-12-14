@@ -21,7 +21,7 @@ describe("<DetailScreen />", () => {
         expect(getByTestId("receiverName")).toHaveTextContent("ANDRA");
         expect(getByTestId("senderBank")).toHaveTextContent("BCA");
         expect(getByTestId("receiverBank")).toHaveTextContent("BRI");
-        expect(getByTestId("receiverSenderAccountNumber")).toHaveTextContent(
+        expect(getByTestId("receiverAccountNumber")).toHaveTextContent(
             "9642433064",
         );
         expect(getByTestId("remark")).toHaveTextContent(

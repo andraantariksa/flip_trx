@@ -49,9 +49,9 @@ export default function DetailScreen({ route }: DetailScreenProps) {
                             </Text>
                             <Text
                                 style={style.textInfoSubtitle}
-                                testID="receiverSenderAccountNumber"
+                                testID="receiverAccountNumber"
                             >
-                                {transaction.senderAccountNumber}
+                                {transaction.receiverAccountNumber}
                             </Text>
                         </View>
                         <View style={style.containerCellRight}>
