@@ -10,8 +10,8 @@ type Transaction = {
     receiverBank: string;
     receiverName: string;
     remark: string;
-    createdAt: Date;
-    completedAt: Date | null;
+    createdAt: string;
+    completedAt: string | null;
     fee: number;
 };
 

@@ -27,18 +27,11 @@ export const getTransactions = async (): Promise<
 };
 
 export const transformToTransaction = (dto: TransactionDto): Transaction => {
-    let completedAt: Date | null;
-    if (dto.completed_at !== null) {
-        completedAt = new Date(dto.completed_at);
-    } else {
-        completedAt = null;
-    }
-
     return {
         amount: dto.amount,
         code: dto.id,
-        completedAt,
-        createdAt: new Date(dto.created_at),
+        completedAt: dto.completed_at,
+        createdAt: dto.created_at,
         fee: dto.fee,
         receiverBank: dto.beneficiary_bank,
         receiverName: dto.beneficiary_name,
