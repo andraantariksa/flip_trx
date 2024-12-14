@@ -64,9 +64,11 @@ export default function useTransactionsQuery(
             (trxA: Transaction, trxB: Transaction) => number
         > = {
             dateAsc: (trxA, trxB) =>
-                new Date(trxA.createdAt).getTime() - new Date(trxB.createdAt).getTime(),
+                new Date(trxA.createdAt).getTime() -
+                new Date(trxB.createdAt).getTime(),
             dateDesc: (trxA, trxB) =>
-                new Date(trxB.createdAt).getTime() - new Date(trxA.createdAt).getTime(),
+                new Date(trxB.createdAt).getTime() -
+                new Date(trxA.createdAt).getTime(),
             nameAsc: (trxA, trxB) =>
                 trxA.receiverName.localeCompare(trxB.receiverName),
             nameDesc: (trxA, trxB) =>

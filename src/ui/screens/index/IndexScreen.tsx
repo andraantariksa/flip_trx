@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 import { TransactionCard } from "./components/TransactionCard";
-import { View, StyleSheet, FlatList, Text, FlatListProps, ListRenderItem } from "react-native";
+import {
+    View,
+    StyleSheet,
+    FlatList,
+    Text,
+    FlatListProps,
+    ListRenderItem,
+} from "react-native";
 import SearchBar from "./components/SearchBar";
 import SortModal, { SortByKey } from "./components/FilterModal";
 import useTransactionsQuery from "../../hooks/useTransactionsQuery";
 import useInsetsStyle from "../../hooks/useInsetsStyle";
 import Transaction from "../../../domain/entities/transaction";
 
-export const Separator = () => (
-    <View style={style.separatorTransaction} />
-);
+export const Separator = () => <View style={style.separatorTransaction} />;
 
 export const TransactionItem: ListRenderItem<Transaction> = ({ item }) => (
     <TransactionCard transaction={item} />
