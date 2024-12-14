@@ -1,4 +1,4 @@
-import Transaction from "../../domain/entities/transaction";
+import Transaction from "@/domain/entities/transaction";
 
 const BASE_URL = "https://recruitment-test.flip.id/";
 

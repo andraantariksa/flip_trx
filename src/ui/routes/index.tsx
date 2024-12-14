@@ -1,12 +1,12 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { IndexScreen } from "../screens/index/IndexScreen";
-import DetailScreen from "../screens/details/DetailsScreen";
+import { IndexScreen } from "@/ui/screens/index/IndexScreen";
+import DetailScreen from "@/ui/screens/details/DetailsScreen";
 import {
     createStaticNavigation,
     StaticParamList,
 } from "@react-navigation/native";
-import { Colors } from "../colors";
-import { MainRoutes } from "./routes";
+import { Colors } from "@/ui/colors";
+import { MainRoutes } from "@/ui/routes/routes";
 
 const MainStack = createNativeStackNavigator({
     screenOptions: {

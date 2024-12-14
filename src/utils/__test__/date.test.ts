@@ -1,4 +1,4 @@
-import { formatDate } from "../date";
+import { formatDate } from "@/utils/date";
 
 describe("formatDate", () => {
     test("Format single digit day of month correctly", () => {

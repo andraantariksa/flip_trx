@@ -34,7 +34,7 @@ export default function DetailScreen({ route }: DetailScreenProps) {
                             {transaction.senderBank.toUpperCase()}
                         </Text>
                         <Image
-                            source={require("../../../../assets/arrow-right.png")}
+                            source={require("@/assets/arrow-right.png")}
                             style={style.iconArrow}
                         />
                         <Text style={style.textTransfer} testID="receiverBank">

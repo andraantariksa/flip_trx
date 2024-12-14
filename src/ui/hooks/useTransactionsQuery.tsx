@@ -1,7 +1,7 @@
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
-import TransactionRepositoryImpl from "../../data/repository/transactionRepository";
-import { SortByKey } from "../screens/index/components/FilterModal";
-import Transaction from "../../domain/entities/transaction";
+import TransactionRepositoryImpl from "@/data/repository/transactionRepository";
+import { SortByKey } from "@/ui/screens/index/components/FilterModal";
+import Transaction from "@/domain/entities/transaction";
 
 const sorter = {
     dateAsc: (trxA, trxB) =>

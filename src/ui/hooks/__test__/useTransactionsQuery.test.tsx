@@ -1,13 +1,12 @@
-import React, { act } from "react";
+import React from "react";
 import "@testing-library/jest-native";
-import { render, renderHook, waitFor } from "@testing-library/react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import useTransactionsQuery from "../useTransactionsQuery";
-import TransactionRepositoryImpl from "../../../data/repository/transactionRepository";
-import { transactionFixtures } from "../../../../__test__/fixtures/transactions";
+import { renderHook, waitFor } from "@testing-library/react-native";
+import useTransactionsQuery from "@/ui/hooks/useTransactionsQuery";
+import TransactionRepositoryImpl from "@/data/repository/transactionRepository";
+import { transactionFixtures } from "@/__test__/fixtures/transactions";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { SortByKey } from "../../screens/index/components/FilterModal";
-import { formatDate } from "../../../utils/date";
+import { SortByKey } from "@/ui/screens/index/components/FilterModal";
+import { formatDate } from "@/utils/date";
 
 jest.mock("../../../data/repository/transactionRepository");
 

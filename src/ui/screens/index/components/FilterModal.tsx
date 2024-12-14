@@ -29,9 +29,9 @@ type ModalItemProps = {
 function ModalItem({ label, isChecked, onPress }: ModalItemProps) {
     let radioIcon: ImageSourcePropType;
     if (isChecked) {
-        radioIcon = require("../../../../../assets/radio_check.png");
+        radioIcon = require("@/assets/radio_check.png");
     } else {
-        radioIcon = require("../../../../../assets/radio_uncheck.png");
+        radioIcon = require("@/assets/radio_uncheck.png");
     }
 
     return (

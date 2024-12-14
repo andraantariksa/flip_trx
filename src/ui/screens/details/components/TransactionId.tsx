@@ -16,7 +16,7 @@ function TransactionId({ transactionId }: TransactionIdProps) {
                 ID TRANSAKSI: {transactionId}
             </Text>
             <Image
-                source={require("../../../../../assets/copy.png")}
+                source={require("@/assets/copy.png")}
                 style={style.iconCopy}
             />
         </TouchableOpacity>

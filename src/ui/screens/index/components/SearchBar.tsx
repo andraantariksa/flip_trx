@@ -7,8 +7,11 @@ import {
     Image,
     TouchableOpacity,
 } from "react-native";
-import { Colors } from "../../../colors";
-import SortModal, { SortBy, SortByKey } from "./FilterModal";
+import { Colors } from "@/ui/colors";
+import SortModal, {
+    SortBy,
+    SortByKey,
+} from "@/ui/screens/index/components/FilterModal";
 
 export type SearchBarProps = {
     setQuery: (query: string) => void;
@@ -33,7 +36,7 @@ const SearchBar = ({ query, setQuery, sortBy, setSortBy }: SearchBarProps) => {
             />
             <View style={style.container}>
                 <Image
-                    source={require("../../../../../assets/search.png")}
+                    source={require("@/assets/search.png")}
                     style={style.iconSearch}
                 />
                 <TextInput
@@ -48,7 +51,7 @@ const SearchBar = ({ query, setQuery, sortBy, setSortBy }: SearchBarProps) => {
                 >
                     <Text style={style.textSort}>{SortBy[sortBy]}</Text>
                     <Image
-                        source={require("../../../../../assets/chevron.png")}
+                        source={require("@/assets/chevron.png")}
                         style={style.iconChevron}
                     />
                 </TouchableOpacity>
