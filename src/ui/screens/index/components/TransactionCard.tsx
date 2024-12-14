@@ -55,7 +55,8 @@ export const TransactionCard = ({ transaction }: TransactionCardProps) => {
                         {transaction.receiverName.toUpperCase()}
                     </Text>
                     <Text style={style.textInfo} testID="info">
-                        Rp{formatNumber(transaction.amount)} ● {formatDate(transaction.createdAt)}
+                        Rp{formatNumber(transaction.amount)} ●{" "}
+                        {formatDate(transaction.createdAt)}
                     </Text>
                 </View>
                 <Text style={[style.statusBase, buttonStyle]} testID="status">

@@ -4,6 +4,12 @@ import { render } from "@testing-library/react-native";
 import { transactionFixtures } from "../../../../../__test__/fixtures/transactions";
 import DetailScreen, { DetailScreenProps } from "../DetailsScreen";
 import { NavigationContainer } from "@react-navigation/native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+
+jest.mock(
+    "react-native-safe-area-context",
+    () => require("react-native-safe-area-context/jest/mock").default,
+);
 
 describe("<DetailScreen />", () => {
     test("Text rendered correctly", () => {
@@ -13,9 +19,11 @@ describe("<DetailScreen />", () => {
             },
         };
         const { getByTestId } = render(
-            <NavigationContainer>
-                <DetailScreen route={route} />
-            </NavigationContainer>,
+            <SafeAreaProvider>
+                <NavigationContainer>
+                    <DetailScreen route={route} />
+                </NavigationContainer>
+            </SafeAreaProvider>,
         );
 
         expect(getByTestId("receiverName")).toHaveTextContent("ANDRA");
