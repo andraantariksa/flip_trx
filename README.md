@@ -41,7 +41,6 @@ Transaction List Page
     - [x] App navigated to Detail Page when transaction row on Transaction List Page is pressed.
     - [x] it has all informations about the selected transaction
     - [x] it has a back button
-
 - [x] You must use React Native
 - [x] You must use typescript
 - [x] You must obtain data only from https://recruitment-test.flip.id/frontend-test using API call,
