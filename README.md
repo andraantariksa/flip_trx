@@ -62,11 +62,15 @@ Make sure the app meets the following requirements:
 
 ## Bonus Point
 
-- [x] Minimized render times - Please see #37 #40
+- [x] Minimized render times - Please see [#37](https://github.com/andraantariksa/flip_trx/pull/37) [#40](https://github.com/andraantariksa/flip_trx/pull/40)
     - Summary
         - Use profiler to know which component are rendered.
         - Use `useMemo` to cache computed value.
         - Child component will re-render when state in the current component. Use `memo` to avoid this re-render.
         - Not everything is worth memoizing. Need to find the balance of readibility and optimization.
         - Make the component as related and isolated on the same purpose as possible.
-- [ ] Import optimization -
+- [ ] Import optimization - Please see [#45](https://github.com/andraantariksa/flip_trx/pull/45)
+
+## Remarks
+
+Thank you for reviewing my code
