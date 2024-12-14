@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { TransactionCard } from "./components/TransactionCard";
-import { View, StyleSheet, FlatList } from "react-native";
+import { View, StyleSheet, FlatList, Text } from "react-native";
 import SearchBar from "./components/SearchBar";
 import SortModal, { SortByKey } from "./components/FilterModal";
 import useTransactionsQuery from "../../hooks/useTransactionsQuery";
@@ -30,28 +30,34 @@ export const IndexScreen = () => {
                 query={searchQuery}
                 sortBy={sortBy}
             />
-            <View>
-                <FlatList
-                    data={data ?? []}
-                    renderItem={({ item }) => (
-                        <TransactionCard transaction={item} />
-                    )}
-                    ItemSeparatorComponent={() => (
-                        <View style={style.separatorTransaction} />
-                    )}
-                />
-            </View>
+            <FlatList
+                data={data ?? []}
+                renderItem={({ item }) => (
+                    <TransactionCard transaction={item} />
+                )}
+                ItemSeparatorComponent={() => (
+                    <View style={style.separatorTransaction} />
+                )}
+                contentContainerStyle={style.containerTransactionsContent}
+                style={style.transactionsContent}
+            />
         </View>
     );
 };
 
 const style = StyleSheet.create({
     container: {
-        flexDirection: "column",
-        padding: 4,
+        flex: 1,
+        marginHorizontal: 4,
         gap: 5.6,
     },
     separatorTransaction: {
         height: 6.4,
+    },
+    containerTransactionsContent: {
+        paddingBottom: 16,
+    },
+    transactionsContent: {
+        flex: 1,
     },
 });
