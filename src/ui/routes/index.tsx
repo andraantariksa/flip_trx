@@ -10,7 +10,6 @@ import { MainRoutes } from "@/ui/routes/routes";
 
 const MainStack = createNativeStackNavigator({
     screenOptions: {
-        headerShown: false,
         contentStyle: {
             backgroundColor: Colors.Gray,
         },
@@ -20,6 +19,7 @@ const MainStack = createNativeStackNavigator({
             screen: IndexScreen,
             options: {
                 title: "Transactions",
+                headerShown: false,
             },
         },
         [MainRoutes.Detail]: {

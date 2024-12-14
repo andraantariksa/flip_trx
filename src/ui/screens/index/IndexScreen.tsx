@@ -4,6 +4,7 @@ import SearchBar from "@/ui/screens/index/components/SearchBar";
 import { SortByKey } from "@/ui/screens/index/components/FilterModal";
 import useInsetsStyle from "@/ui/hooks/useInsetsStyle";
 import Transactions from "@/ui/screens/index/components/Transactions";
+import { StatusBar } from "expo-status-bar";
 
 export const IndexScreen = () => {
     const insetsStyle = useInsetsStyle();
@@ -26,7 +27,8 @@ export const IndexScreen = () => {
 const style = StyleSheet.create({
     container: {
         flex: 1,
-        marginHorizontal: 4,
+        paddingHorizontal: 8,
+        paddingTop: 10,
         gap: 5.6,
     },
 });
