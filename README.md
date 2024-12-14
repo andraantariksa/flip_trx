@@ -26,9 +26,7 @@ Transaction List Page
 - [x] You must use a navigation library - react-navigation
 - [x] You are allowed to use state management library - react-query
 
-### Bonus
-
-## Checklist
+### Checklist
 
 Make sure the app meets the following requirements:
 
@@ -37,3 +35,10 @@ Make sure the app meets the following requirements:
 - [x] Transaction list page is present
 - [x] Detail Transaction page shows correct transaction information
 - [x] Filter/search/sort functionality are working
+
+### Bonus Point
+
+Optimization
+
+- Minimized render times - #37
+- Import optimization -
