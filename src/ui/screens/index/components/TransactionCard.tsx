@@ -9,13 +9,11 @@ import {
     GestureResponderEvent,
     ViewStyle,
 } from "react-native";
-import { Colors } from "../../../colors";
-import { MainRoutes } from "../../../routes/routes";
-import Transaction, {
-    TransactionStatus,
-} from "../../../../domain/entities/transaction";
-import { formatNumber } from "../../../../utils/number";
-import { formatDate } from "../../../../utils/date";
+import { Colors } from "@/ui/colors";
+import { MainRoutes } from "@/ui/routes/routes";
+import Transaction, { TransactionStatus } from "@/domain/entities/transaction";
+import { formatNumber } from "@/utils/number";
+import { formatDate } from "@/utils/date";
 
 export type TransactionCardProps = {
     transaction: Transaction;
@@ -44,7 +42,7 @@ export const TransactionCard = ({ transaction }: TransactionCardProps) => {
                             {transaction.senderBank.toUpperCase()}
                         </Text>
                         <Image
-                            source={require("../../../../../assets/arrow-right.png")}
+                            source={require("@/assets/arrow-right.png")}
                             style={style.iconArrow}
                         />
                         <Text style={style.textTransfer} testID="receiverBank">

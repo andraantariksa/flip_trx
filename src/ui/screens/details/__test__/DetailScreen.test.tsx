@@ -1,7 +1,7 @@
 import React from "react";
 import "@testing-library/jest-native";
 import { render } from "@testing-library/react-native";
-import { transactionFixtures } from "../../../../../__test__/fixtures/transactions";
+import { transactionFixtures } from "@/__test__/fixtures/transactions";
 import DetailScreen, { DetailScreenProps } from "../DetailsScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { SafeAreaProvider } from "react-native-safe-area-context";

@@ -8,11 +8,11 @@ import {
     Text,
     TouchableOpacity,
 } from "react-native";
-import useTransactionsQuery from "../../../hooks/useTransactionsQuery";
-import { SortByKey } from "./FilterModal";
-import Transaction from "../../../../domain/entities/transaction";
-import { TransactionCard } from "./TransactionCard";
-import { Colors } from "../../../colors";
+import useTransactionsQuery from "@/ui/hooks/useTransactionsQuery";
+import { SortByKey } from "@/ui/screens/index/components/FilterModal";
+import Transaction from "@/domain/entities/transaction";
+import { TransactionCard } from "@/ui/screens/index/components/TransactionCard";
+import { Colors } from "@/ui/colors";
 
 const TransactionSeparator = () => <View style={style.separatorTransaction} />;
 

@@ -1,8 +1,8 @@
-import TransactionRepository from "../../domain/repositories/transactionRepository";
+import TransactionRepository from "@/domain/repositories/transactionRepository";
 import {
     getTransactions,
     transformToTransactions,
-} from "../network/flipService";
+} from "@/data/network/flipService";
 
 class TransactionRepositoryImpl implements TransactionRepository {
     getAll = async () => {

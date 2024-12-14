@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { View, StyleSheet } from "react-native";
-import SearchBar from "./components/SearchBar";
-import { SortByKey } from "./components/FilterModal";
-import useInsetsStyle from "../../hooks/useInsetsStyle";
-import Transactions from "./components/Transactions";
+import SearchBar from "@/ui/screens/index/components/SearchBar";
+import { SortByKey } from "@/ui/screens/index/components/FilterModal";
+import useInsetsStyle from "@/ui/hooks/useInsetsStyle";
+import Transactions from "@/ui/screens/index/components/Transactions";
 
 export const IndexScreen = () => {
     const insetsStyle = useInsetsStyle();

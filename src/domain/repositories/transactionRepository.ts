@@ -1,4 +1,4 @@
-import Transaction from "../entities/transaction";
+import Transaction from "@/domain/entities/transaction";
 
 interface TransactionRepository {
     getAll(): Promise<Array<Transaction>>;
