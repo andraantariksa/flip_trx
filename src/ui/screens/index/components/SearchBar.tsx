@@ -8,41 +8,52 @@ import {
     TouchableOpacity,
 } from "react-native";
 import { Colors } from "../../../colors";
-import { SortBy, SortByKey } from "./FilterModal";
+import SortModal, { SortBy, SortByKey } from "./FilterModal";
 
 export type SearchBarProps = {
-    onPressSort: () => void;
     setQuery: (query: string) => void;
     query: string;
     sortBy: SortByKey;
+    setSortBy: (sortBy: SortByKey) => void;
 };
 
-const SearchBar = ({
-    onPressSort,
-    query,
-    setQuery,
-    sortBy,
-}: SearchBarProps) => {
+const SearchBar = ({ query, setQuery, sortBy, setSortBy }: SearchBarProps) => {
+    const [showFilterModal, setShowFilterModal] = useState(false);
+
+    const showModal = () => setShowFilterModal(true);
+    const hideModal = () => setShowFilterModal(false);
+
     return (
-        <View style={style.container}>
-            <Image
-                source={require("../../../../../assets/search.png")}
-                style={style.iconSearch}
+        <>
+            <SortModal
+                value={sortBy}
+                onRequestClose={hideModal}
+                visible={showFilterModal}
+                onChangeValue={setSortBy}
             />
-            <TextInput
-                value={query}
-                onChangeText={setQuery}
-                placeholder="Cari nama, bank, atau nominal"
-                style={style.textInput}
-            />
-            <TouchableOpacity style={style.containerSort} onPress={onPressSort}>
-                <Text style={style.textSort}>{SortBy[sortBy]}</Text>
+            <View style={style.container}>
                 <Image
-                    source={require("../../../../../assets/chevron.png")}
-                    style={style.iconChevron}
+                    source={require("../../../../../assets/search.png")}
+                    style={style.iconSearch}
                 />
-            </TouchableOpacity>
-        </View>
+                <TextInput
+                    value={query}
+                    onChangeText={setQuery}
+                    placeholder="Cari nama, bank, atau nominal"
+                    style={style.textInput}
+                />
+                <TouchableOpacity
+                    style={style.containerSort}
+                    onPress={showModal}
+                >
+                    <Text style={style.textSort}>{SortBy[sortBy]}</Text>
+                    <Image
+                        source={require("../../../../../assets/chevron.png")}
+                        style={style.iconChevron}
+                    />
+                </TouchableOpacity>
+            </View>
+        </>
     );
 };
 
