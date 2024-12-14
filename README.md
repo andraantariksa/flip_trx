@@ -62,7 +62,7 @@ Make sure the app meets the following requirements:
 
 ## Bonus Point
 
-- [x] Minimized render times - Please see #37 #40
+- [x] Minimized render times - Please see [#37](https://github.com/andraantariksa/flip_trx/pull/37) [#40](https://github.com/andraantariksa/flip_trx/pull/40)
     - Summary
         - Use profiler to know which component are rendered.
         - Use `useMemo` to cache computed value.
